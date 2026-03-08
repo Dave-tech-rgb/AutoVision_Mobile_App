@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "framework": null,
-  "buildCommand": "npx expo export:web",
-  "outputDirectory": "web-build"
+  "buildCommand": "npm run build:web",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
 }
