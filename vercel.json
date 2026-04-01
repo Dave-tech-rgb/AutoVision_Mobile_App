@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "framework": null,
+  "buildCommand": "npm run build:web",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
+}
