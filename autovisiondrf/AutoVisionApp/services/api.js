@@ -147,7 +147,10 @@ export const usersAPI = {
       method: 'POST',
       body: JSON.stringify(payload),
     });
-    if (!res.ok) throw new Error('Failed to create user');
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(JSON.stringify(err));   // ← shows real validation error
+    }
     return res.json();
   },
 
@@ -156,7 +159,10 @@ export const usersAPI = {
       method: 'PATCH',
       body: JSON.stringify(payload),
     });
-    if (!res.ok) throw new Error('Failed to update user');
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(JSON.stringify(err));
+    }
     return res.json();
   },
 
@@ -165,6 +171,14 @@ export const usersAPI = {
       method: 'DELETE',
     });
     if (!res.ok) throw new Error('Failed to delete user');
+  },
+
+  toggleActive: async (id) => {
+    const res = await authFetch(`${API_BASE}/users/${id}/toggle-active/`, {
+      method: 'POST',
+    });
+    if (!res.ok) throw new Error('Failed to toggle user status');
+    return res.json();
   },
 };
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Stack } from 'expo-router';
-import { AuthProvider, useAuth } from '../store/authStore';
 import { ActivityIndicator, View } from 'react-native';
+import { AuthProvider, useAuth } from '../store/authStore';
 
 function RootNavigator() {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#0A0E1A' }}>
-        <ActivityIndicator color="#00D4FF" size="large" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#F4F5F7' }}>
+        <ActivityIndicator color="#E8500A" size="large" />
       </View>
     );
   }
